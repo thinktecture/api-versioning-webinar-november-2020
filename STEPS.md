@@ -19,3 +19,10 @@ dotnet add package Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer -v 5.0.0
 2. Zwei neue Beispiel-Controller hinzugefügt mit einem versionierten Endpunkt.
 3. Neuer Controller mit zwei unterschiedlichen Versionen des gleichen Endpunkts hinzugefügt.
 4. Swagger-Funktionalität wieder herstellen
+
+## Branch configure-versioning
+
+1. ReportApiVersions anschalten, um Informationen zur Version auszugeben. 
+2. Versionsauswahl ändern auf Media Type.
+3. Versionsauswahl ändern auf Url-Pfad.
+4. Eine Version als veraltet markieren.
