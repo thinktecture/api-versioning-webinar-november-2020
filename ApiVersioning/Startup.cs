@@ -26,11 +26,13 @@ namespace ApiVersioning
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
+            services.AddApiVersioning();
+            services.AddVersionedApiExplorer();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApiVersioning", Version = "v1" });
+                c.SwaggerDoc("1.0", new OpenApiInfo { Title = "ApiVersioning", Version = "1.0" });
+                c.SwaggerDoc("2.0", new OpenApiInfo { Title = "ApiVersioning", Version = "2.0" });
             });
         }
 
@@ -41,7 +43,10 @@ namespace ApiVersioning
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiVersioning v1"));
+                app.UseSwaggerUI(c => {
+                    c.SwaggerEndpoint("/swagger/1.0/swagger.json", "ApiVersioning v1");
+                    c.SwaggerEndpoint("/swagger/2.0/swagger.json", "ApiVersioning v2");
+                });
             }
 
             app.UseHttpsRedirection();

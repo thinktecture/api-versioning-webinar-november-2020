@@ -1,0 +1,85 @@
+{
+	// Place your basta-2020-api-versioning workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Sample Controller": {
+		"description": "Adds a sample controller",
+		"scope": "csharp",
+		"prefix": "SampleController",
+		"body": [
+			"using Microsoft.AspNetCore.Mvc;",
+			"",
+			"namespace ApiVersioning",
+			"{",
+			"\t[ApiController]",
+			"\t[Route(\"[controller]\")]",
+			"\tpublic class SampleController : ControllerBase",
+			"\t{",
+			"\t\t[HttpGet]",
+			"\t\tpublic ActionResult<string> Version()",
+			"\t\t{",
+			"\t\t\treturn Ok(\"1\");",
+			"\t\t}",
+			"\t}",
+			"",
+			"\t[ApiController]",
+			"\t[Route(\"[controller]\")]",
+			"\tpublic class Sample2Controller : ControllerBase",
+			"\t{",
+			"\t\t[HttpGet]",
+			"\t\tpublic ActionResult<string> Version()",
+			"\t\t{",
+			"\t\t\treturn Ok(\"2\");",
+			"\t\t}",
+			"\t}",
+			"}",
+			"",
+		]
+	},
+	"Example Controller": {
+		"description": "Adds an example controller",
+		"scope": "csharp",
+		"prefix": "ExampleController",
+		"body": [
+			"using Microsoft.AspNetCore.Mvc;",
+			"",
+			"namespace ApiVersioning",
+			"{",
+			//"\t[ApiVersion(\"1.0\")]",
+			//"\t[ApiVersion(\"2.0\")]",
+			"\t[ApiController]",
+			"\t[Route(\"[controller]\")]",
+			"\tpublic class ExampleController : ControllerBase",
+			"\t{",
+			//"\t\t[MapToApiVersion(\"1.0\")]",
+			"\t\t[HttpGet(\"Version\")]",
+			"\t\tpublic ActionResult<string> Version()",
+			"\t\t{",
+			"\t\t\treturn Ok(\"1\");",
+			"\t\t}",
+			"",
+			//"\t\t[MapToApiVersion(\"2.0\")]",
+			"\t\t[HttpGet(\"Version2\")]",
+			"\t\tpublic ActionResult<string> Version2()",
+			"\t\t{",
+			"\t\t\treturn Ok(\"2\");",
+			"\t\t}",
+			"\t}",
+			"}",
+			""
+		]
+	}
+}
