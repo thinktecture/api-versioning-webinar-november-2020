@@ -1,0 +1,952 @@
+{
+	"info": {
+		"_postman_id": "8c90645c-f09d-460c-9d5a-0d84855a0449",
+		"name": "API Versioning",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Start new project",
+			"item": [
+				{
+					"name": "Get weather forecasts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1f4ca907-0620-4990-8034-37dc8ea58420",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/WeatherForecast",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"WeatherForecast"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "2. Add basic & default versioning",
+			"item": [
+				{
+					"name": "Get weather forecasts should return 400",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "919ef395-ce87-4a2e-9b16-1ad29960d568",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/WeatherForecast",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"WeatherForecast"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get weather forecasts with api version",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a9bc029e-f739-4be4-9998-9e759be616bb",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/WeatherForecast?api-version=1.0",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"WeatherForecast"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "1.0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Version",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7ce991eb-012a-4907-a0c4-fa20aed65211",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"1\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/Sample?api-version=1.0",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"Sample"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "1.0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Version 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5aeecf91-8b34-4e1e-85b5-a25f21297bd9",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"2\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/Sample?api-version=2.0",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"Sample"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2.0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET SameController Version",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0b45c866-1662-468e-950c-47f275e8a5c1",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"1\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/Example/Version?api-version=1.0",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"Example",
+								"Version"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "1.0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get SameController Version 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7ad8e86-0bfe-4afb-85c8-dc75c0bf8723",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"2\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/Example/Version?api-version=2.0",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"Example",
+								"Version"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2.0"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "3. Configure API Versioning",
+			"item": [
+				{
+					"name": "Get Version and check versions header",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cbdf595f-2ed6-4506-85fe-f6b0fd4d789f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"1\");",
+									"});",
+									"",
+									"pm.test(\"api-supported-versions header is present\", function () {",
+									"    pm.response.to.be.header(\"api-supported-versions\", \"1.0, 2.0\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/Sample?api-version=1.0",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"Sample"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "1.0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Version 1 by MediaType",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d5c3d188-aa29-4d72-9909-02e80bfbaf38",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"1\");",
+									"});",
+									"",
+									"pm.test(\"api-supported-versions header is present\", function () {",
+									"    pm.response.to.be.header(\"api-supported-versions\", \"1.0, 2.0\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain;v=1.0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/Sample",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"Sample"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Version 2 by MediaType",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d9ef0bc0-a1dc-4efb-9d75-2b2035f16175",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"2\");",
+									"});",
+									"",
+									"pm.test(\"api-supported-versions header is present\", function () {",
+									"    pm.response.to.be.header(\"api-supported-versions\", \"1.0, 2.0\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "text/plain;v=2.0"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/Sample",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"Sample"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Version 1 by Url Segment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "36ba5068-e955-484d-b5f4-cb6b40686ffd",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"1\");",
+									"});",
+									"",
+									"pm.test(\"api-supported-versions header is present\", function () {",
+									"    pm.response.to.be.header(\"api-supported-versions\", \"1.0, 2.0\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/v1.0/Sample",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1.0",
+								"Sample"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Version 2 by Url Segment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f42c4e45-e425-4982-9d0d-82e6ae24d837",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"2\");",
+									"});",
+									"",
+									"pm.test(\"api-supported-versions header is present\", function () {",
+									"    pm.response.to.be.header(\"api-supported-versions\", \"1.0, 2.0\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/v2.0/Sample",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v2.0",
+								"Sample"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get deprecated weather forecasts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c3fc8c9b-cdfa-47bb-a8b6-380950abce01",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"api-deprecated-versions header is present\", function () {",
+									"    pm.response.to.be.header(\"api-deprecated-versions\", \"1.0\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/api/v1.0/WeatherForecast",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"v1.0",
+								"WeatherForecast"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "4. Advanced Customization",
+			"item": [
+				{
+					"name": "Get weather forecasts as default endpoint",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7bcee724-5947-4799-90ff-a43831670323",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"api-supported-versions header is present\", function () {",
+									"    pm.response.to.be.header(\"api-supported-versions\", \"1.0\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/WeatherForecast",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"WeatherForecast"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get unversioned weather forecasts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fb9fd203-8db9-443e-8e48-b8a9db1cf5b1",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"api-supported-versions header is not present\", function () {",
+									"    pm.response.to.not.have.header(\"api-supported-versions\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/WeatherForecast",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"WeatherForecast"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Version by custom query string",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "21a3d30a-94e6-42fc-ac00-f0f29038c82e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"1\");",
+									"});",
+									"",
+									"pm.test(\"api-supported-versions header is present\", function () {",
+									"    pm.response.to.be.header(\"api-supported-versions\", \"1.0, 2.0\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/Sample?v=1.0",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"Sample"
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": "1.0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Version by custom media type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5122ca32-97de-4eb9-8b7c-06288c09ef42",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"1\");",
+									"});",
+									"",
+									"pm.test(\"api-supported-versions header is present\", function () {",
+									"    pm.response.to.be.header(\"api-supported-versions\", \"1.0, 2.0\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain;version=1.0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/Sample",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"Sample"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Version by custom header",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6586600c-672c-46b2-b2ee-cf782bd89319",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"1\");",
+									"});",
+									"",
+									"pm.test(\"api-supported-versions header is present\", function () {",
+									"    pm.response.to.be.header(\"api-supported-versions\", \"1.0, 2.0\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-version",
+								"type": "text",
+								"value": "1.0"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/Sample",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"Sample"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test dynamic version selection",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b7dd8c3b-49c1-4836-ae04-c9e1050a8166",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"1.0\");",
+									"});",
+									"",
+									"pm.test(\"api-supported-versions header is present\", function () {",
+									"    pm.response.to.be.header(\"api-supported-versions\", \"1.0, 2.0\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/Example/Test?v=1.0",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"Example",
+								"Test"
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": "1.0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test dynamic version selection with v2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "695b95a6-990b-4969-b445-a59cc667a86b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"2.0\");",
+									"});",
+									"",
+									"pm.test(\"api-supported-versions header is present\", function () {",
+									"    pm.response.to.be.header(\"api-supported-versions\", \"1.0, 2.0\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{host}}:{{port}}/Example/Test?v=2.0",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"Example",
+								"Test"
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": "2.0"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "8e87b056-4fc2-4c1a-b1b2-3013a0fa5927",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83e27389-fb7e-429b-acc2-9b9364dae7f6",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "994d187a-2b78-43a7-ba16-1d129e2fa13e",
+			"key": "protocol",
+			"value": "https",
+			"type": "string"
+		},
+		{
+			"id": "20ec8f03-e90e-4c9c-95ab-44106f9e5649",
+			"key": "host",
+			"value": "localhost",
+			"type": "string"
+		},
+		{
+			"id": "adc797c6-e3db-4987-834c-799b55980adf",
+			"key": "port",
+			"value": "5001",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
