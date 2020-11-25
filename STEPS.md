@@ -18,3 +18,4 @@ dotnet add package Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer -v 5.0.0
 1. Versionierungs-Funktionalität zum Startup hinzugefügt, die Versionsinfo bei Swagger aktualisiert und dem Standard-Controller über ein Attribut die Version 1.0 zugewiesen.
 2. Zwei neue Beispiel-Controller hinzugefügt mit einem versionierten Endpunkt.
 3. Neuer Controller mit zwei unterschiedlichen Versionen des gleichen Endpunkts hinzugefügt.
+4. Swagger-Funktionalität wieder herstellen
