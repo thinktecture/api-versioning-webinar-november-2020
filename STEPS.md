@@ -12,3 +12,7 @@ cd ApiVersioning
 dotnet add package Microsoft.AspNetCore.Mvc.Versioning -v 5.0.0-preview.2
 dotnet add package Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer -v 5.0.0-preview.2
 ```
+
+## Branch add-basic-versioning
+
+1. Versionierungs-Funktionalität zum Startup hinzugefügt, die Versionsinfo bei Swagger aktualisiert und dem Standard-Controller über ein Attribut die Version 1.0 zugewiesen.
