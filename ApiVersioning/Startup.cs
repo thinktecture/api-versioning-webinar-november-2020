@@ -27,7 +27,9 @@ namespace ApiVersioning
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddApiVersioning();
+            services.AddApiVersioning(c => {
+                c.ReportApiVersions = true;
+            });
             services.AddVersionedApiExplorer();
             services.AddSwaggerGen(c =>
             {
