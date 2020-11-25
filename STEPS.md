@@ -23,3 +23,4 @@ dotnet add package Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer -v 5.0.0
 ## Branch configure-versioning
 
 1. ReportApiVersions anschalten, um Informationen zur Version auszugeben. 
+2. Versionsauswahl ändern auf Media Type.
