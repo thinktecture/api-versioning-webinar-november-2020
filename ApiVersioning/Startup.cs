@@ -32,6 +32,11 @@ namespace ApiVersioning
                 c.ReportApiVersions = true;
                 c.DefaultApiVersion = new ApiVersion(1, 0);
                 c.AssumeDefaultVersionWhenUnspecified = true;
+                c.ApiVersionReader = ApiVersionReader.Combine(
+                    new QueryStringApiVersionReader("v"),
+                    new MediaTypeApiVersionReader("version"),
+                    new HeaderApiVersionReader("api-version")
+                );
             });
             services.AddVersionedApiExplorer(c => c.SubstituteApiVersionInUrl = true);
             services.AddSwaggerGen(c =>
