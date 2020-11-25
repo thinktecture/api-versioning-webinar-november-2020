@@ -48,5 +48,38 @@
 			"}",
 			"",
 		]
+	},
+	"Example Controller": {
+		"description": "Adds an example controller",
+		"scope": "csharp",
+		"prefix": "ExampleController",
+		"body": [
+			"using Microsoft.AspNetCore.Mvc;",
+			"",
+			"namespace ApiVersioning",
+			"{",
+			//"\t[ApiVersion(\"1.0\")]",
+			//"\t[ApiVersion(\"2.0\")]",
+			"\t[ApiController]",
+			"\t[Route(\"[controller]\")]",
+			"\tpublic class ExampleController : ControllerBase",
+			"\t{",
+			//"\t\t[MapToApiVersion(\"1.0\")]",
+			"\t\t[HttpGet(\"Version\")]",
+			"\t\tpublic ActionResult<string> Version()",
+			"\t\t{",
+			"\t\t\treturn Ok(\"1\");",
+			"\t\t}",
+			"",
+			//"\t\t[MapToApiVersion(\"2.0\")]",
+			"\t\t[HttpGet(\"Version2\")]",
+			"\t\tpublic ActionResult<string> Version2()",
+			"\t\t{",
+			"\t\t\treturn Ok(\"2\");",
+			"\t\t}",
+			"\t}",
+			"}",
+			""
+		]
 	}
 }
