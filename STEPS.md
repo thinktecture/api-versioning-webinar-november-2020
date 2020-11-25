@@ -32,3 +32,4 @@ dotnet add package Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer -v 5.0.0
 1. WeatherForecast Controller in einen unversionierten Zustand zurück bringen und Standard-Version hinzufügen.
 2. Endpunkt aus der Versionierung ausnehmen.
 3. Versionsauswahl individuell anpassen.
+4. Ausgewählte Version im Code auswerten.
