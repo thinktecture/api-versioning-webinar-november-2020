@@ -8,8 +8,8 @@ using Microsoft.Extensions.Logging;
 namespace ApiVersioning.Controllers
 {
     [ApiController]
-    [Route("api/v{version:apiVersion}/[controller]")]
-    [ApiVersion("1.0", Deprecated = true)]
+    [Route("[controller]")]
+    [ApiVersionNeutral]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]

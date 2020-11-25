@@ -26,3 +26,10 @@ dotnet add package Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer -v 5.0.0
 2. Versionsauswahl ändern auf Media Type.
 3. Versionsauswahl ändern auf Url-Pfad.
 4. Eine Version als veraltet markieren.
+
+## Branch advanced-customization
+
+1. WeatherForecast Controller in einen unversionierten Zustand zurück bringen und Standard-Version hinzufügen.
+2. Endpunkt aus der Versionierung ausnehmen.
+3. Versionsauswahl individuell anpassen.
+4. Ausgewählte Version im Code auswerten.
