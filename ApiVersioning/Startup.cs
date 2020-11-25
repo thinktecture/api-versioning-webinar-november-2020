@@ -30,9 +30,8 @@ namespace ApiVersioning
             services.AddControllers();
             services.AddApiVersioning(c => {
                 c.ReportApiVersions = true;
-                c.ApiVersionReader = new MediaTypeApiVersionReader();
             });
-            services.AddVersionedApiExplorer();
+            services.AddVersionedApiExplorer(c => c.SubstituteApiVersionInUrl = true);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("1.0", new OpenApiInfo { Title = "ApiVersioning", Version = "1.0" });
